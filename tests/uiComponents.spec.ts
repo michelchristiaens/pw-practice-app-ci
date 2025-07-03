@@ -1,5 +1,6 @@
 import {expect} from '@playwright/test';
 import {test} from '../test-options';
+import { argosScreenshot } from "@argos-ci/playwright";
 
 test.beforeEach(async ({page}) => {
     await page.goto('http://localhost:4200');
@@ -18,11 +19,18 @@ test.describe('Form Layouts page', () => {
             console.log('cleanup db on retry')
         }
         
+        await argosScreenshot(page, "before input");
+
         const emailTextbox = page.locator('nb-card', { hasText: "Using the Grid"}).getByRole('textbox', {name: 'Email'});
         
         await emailTextbox.fill('mc@hotmail.com');
+
+        await argosScreenshot(page, "after mc@hotmail.com input");
+
         await emailTextbox.clear();
         await emailTextbox.pressSequentially('aha@hotmail.com', {delay: 100 /* milliseconds */});        
+
+        await argosScreenshot(page, "after aha@hotmail.com input");
 
         expect(await emailTextbox.inputValue()).toEqual('aha@hotmail.com')
     });

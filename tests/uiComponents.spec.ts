@@ -13,6 +13,20 @@ test.describe('Form Layouts page', () => {
         await page.getByText('Form layouts').click();
     });
 
+     test.only('test with argos.ci', async ({page}, testInfo) => {       
+        if(testInfo.retry > 0){
+            console.log('cleanup db on retry')
+        }
+        
+        const emailTextbox = page.locator('nb-card', { hasText: "Using the Grid"}).getByRole('textbox', {name: 'Email'});
+        
+        await emailTextbox.fill('mc@hotmail.com');
+        await emailTextbox.clear();
+        await emailTextbox.pressSequentially('aha@hotmail.com', {delay: 100 /* milliseconds */});        
+
+        expect(await emailTextbox.inputValue()).toEqual('aha@hotmail.com')
+    });
+
     test('input fields', async ({page}, testInfo) => {       
         if(testInfo.retry > 0){
             console.log('cleanup db on retry')

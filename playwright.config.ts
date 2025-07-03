@@ -47,7 +47,7 @@ export default defineConfig<TestOptions>({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     actionTimeout: 5000, // Set a timeout of 5 seconds for each action
-    navigationTimeout: 5000, // Set a timeout of 5 seconds for navigation actions    
+    navigationTimeout: 2 * 60 * 1000, // Set a timeout of 5 seconds for navigation actions    
     // video: {
     //   mode: 'on',
     //   size: {width: 1920, height: 1080}

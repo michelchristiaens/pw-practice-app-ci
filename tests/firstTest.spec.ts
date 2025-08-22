@@ -8,6 +8,10 @@ test.beforeEach(async ({page}, testInfo) => {
     testInfo.setTimeout(25000); // Set a timeout of 10 seconds for this test
 });
 
+test.beforeAll(async () => {
+    process.env['uiTestingPlaygroundURL'] = 'http://uitestingplayground.com/ajax'; // Set environment variable for all tests: just an example, more suitable for secrets
+});
+
 
 test('locator syntax rules' , async ({page}) => {    
     //by tag
@@ -145,22 +149,24 @@ test('ajax waitForResponse', async ({page}) => {
      
     const successMessage = page.locator('.bg-success');
 
-    await page.waitForResponse('http://uitestingplayground.com/ajaxdata');
+    await page.waitForResponse('http://uitestingplayground.com/ajaxdata', { timeout: 20000 }); //globaltimeout of 5sec isn't enough
 
     await expect(successMessage).toHaveText('Data loaded with AJAX get request.');
 });
 
+test.describe('increased action timeout', () => {
+    test.use({ actionTimeout: 20000 }); // Set a timeout of 20 seconds for each action in this describe block
+   
 test('timeouts', async ({page}) => {
-    //test.setTimeout(30000); // Set a timeout of 30 seconds for this test
-    //test.use({ actionTimeout: 5000, navigationTimeout: 5000 });
-
-    //test.slow(); // Mark this test as slow : multiplies all timeouts by 3x
-
+    //test.setTimeout(30000); // Set a timeout of 30 seconds for this test -> no effect because the click() will stay on 5sec
+    //test.slow(); // Mark this test as slow : triples the test timeout -> no effect because the click() will stay on 5sec
+    
     await page.goto('http://uitestingplayground.com/ajax');
 
     await page.getByRole('button', { name: 'Button Triggering AJAX Request' }).click();
      
     const successMessage = page.locator('.bg-success');
 
-    await successMessage.click();
+    await successMessage.click();//({ timeout: 20000 }); // Override the action timeout for this specific action
+});
 });

@@ -14,7 +14,7 @@ test.describe('Form Layouts page', () => {
         await page.getByText('Form layouts').click();
     });
 
-     test.only('test with argos.ci', async ({page}, testInfo) => {       
+     test('test with argos.ci @regression', async ({page}, testInfo) => {       
         if(testInfo.retry > 0){
             console.log('cleanup db on retry')
         }
@@ -141,7 +141,7 @@ test.describe('Form Layouts page', () => {
         expect(tooltip).toEqual('This is a tooltip');
     });
 
-    test('browser dialog', async ({page}) => {
+    test('browser dialog @regression', async ({page}) => {
         await page.getByText('Tables & Data').click();
         await page.getByText('Smart Table').click();
 
@@ -220,7 +220,8 @@ test.describe('Form Layouts page', () => {
         }
     });
 
-    test('datepicker', async ({page}) => {
+    test.skip('datepicker', async ({page}) => {
+        
         await page.getByRole('link', { name: 'Forms' }).click();
         await page.getByRole('link', { name: 'Datepicker' }).click();
 

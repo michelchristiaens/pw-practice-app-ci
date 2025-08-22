@@ -1,18 +1,17 @@
  import {test, expect} from '@playwright/test';
 
-
- test.beforeEach(async ({page}) => {
-    await page.goto('http://localhost:4200');
+test.beforeEach(async({page}) => {
+    await page.goto('/', {waitUntil: 'domcontentloaded'});   //waituntil 'load' times out on mobile emulation
 });
 
- test('input fields', async ({page}, testInfo) => {       
-        if(testInfo.project.name == 'Mobile')
+ test('input fields @smoke', async ({page}, testInfo) => {   
+        if(testInfo.project.name == 'mobile')
             await page.locator('.sidebar-toggle').click();
 
         await page.getByText('Forms').click();
         await page.getByText('Form layouts').click();
 
-        if(testInfo.project.name == 'Mobile')
+        if(testInfo.project.name == 'mobile')
             await page.locator('.sidebar-toggle').click();
 
         

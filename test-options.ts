@@ -3,7 +3,7 @@ import { PageManager } from './tests/POM/pageManager'
 
 export type TestOptions = {
     globalsQaURL: string
-    formLayoutsPage: string
+    formLayoutsPage: string   
     pageManager: PageManager
 }
 
@@ -16,7 +16,7 @@ export const test = base.extend<TestOptions>({
         await page.getByText('Form layouts').click(); 
         await use('');
         console.log('Teardown');
-    },
+    },    
 
     pageManager: async({page, formLayoutsPage}, use) => {
         const pm = new PageManager(page);

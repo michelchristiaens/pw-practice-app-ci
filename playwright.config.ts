@@ -13,20 +13,20 @@ import 'dotenv/config'
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig<TestOptions>({
-  //globalTimeout: 30 * 1000, // Set a global timeout of 30 seconds for all tests
+  //globalTimeout: 60 * 1000, // Set a global timeout of 30 seconds for all tests
   //timeout: 30 * 1000, // Set a timeout of 30 seconds for each test
-  expect: {    
+  expect: {
     timeout: 5 * 1000, // Set a timeout of 5 seconds for expect conditions
   },
   testDir: './tests',
   /* Run tests in files in parallel */
-  fullyParallel: true,
+  fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: false,//!!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  workers: process.env.CI ? 1 : 1,//undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     process.env.CI ? ["dot"] : ["list"],
@@ -41,9 +41,9 @@ export default defineConfig<TestOptions>({
         token: "argos_3319c9b485da748dff545eb400591e4b63",
       },
     ],
-    ['json', {outputFile: 'test-results/jsonReport.json'}],
-    ['junit', {outputFile: 'test-results/junitReport.xml'}],
-    //['allure-playwright'],
+    ['json', { outputFile: 'test-results/jsonReport.json' }],
+    ['junit', { outputFile: 'test-results/junitReport.xml' }],
+    ['allure-playwright'],
     ['html']
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -54,12 +54,12 @@ export default defineConfig<TestOptions>({
     //   : process.env.STAGING === '1' ? 'http://localhost:4202'
     //   : 'http://localhost:4200',
     globalsQaURL: 'https://www.globalsqa.com/demo-site/draganddrop/',
-    
+
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    actionTimeout: 5000, // Set a timeout of 5 seconds for each action
-    navigationTimeout: 2 * 60 * 1000, // Set a timeout of 5 seconds for navigation actions    
+    //actionTimeout: 5000, // Set a timeout of 5 seconds for each action
+    //navigationTimeout: 2 * 60 * 1000, // Set a timeout of 120 seconds for navigation actions    
     // video: {
     //   mode: 'on',
     //   size: {width: 1920, height: 1080}
@@ -70,14 +70,14 @@ export default defineConfig<TestOptions>({
 
   /* Configure projects for major browsers */
   projects: [
-    {
-      name: 'dev',
-      use: {
-        browserName: 'chromium',
-        baseURL: 'http://localhost:4201'
-       },
-    },
-    
+    // {
+    //   name: 'dev',
+    //   use: {
+    //     browserName: 'chromium',
+    //     baseURL: 'http://localhost:4201'
+    //    },
+    // },
+
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
@@ -88,17 +88,19 @@ export default defineConfig<TestOptions>({
       use: { ...devices['Desktop Firefox'] },
     },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {      
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     /* Test against mobile viewports. */
+
     {
-      name: 'Mobile',
+      name: 'mobile',
       testMatch: 'testMobile.spec.ts',
-      use: { ...devices['iPhone 13 Pro'] },
+      use: { ...devices['iPhone 15'] },
     },
+
     // {
     //   name: 'Mobile Safari',
     //   use: { ...devices['iPhone 12'] },

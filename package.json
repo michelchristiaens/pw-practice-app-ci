@@ -9,6 +9,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "smoke": "npx playwright test --grep @smoke",
+    "regression": "npx playwright test --grep @regression",
     "uiComponents-chrome": "npx playwright test uiComponents.spec.ts --project=chromium"
   },
   "dependencies": {

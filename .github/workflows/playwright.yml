@@ -17,8 +17,14 @@ jobs:
       run: npm ci --force
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps --force
-    - name: Run Playwright tests
-      run: npm run uiComponents-chrome
+    - name: Run Playwright Smoke tests
+      run: npm run smoke
+    - name: Run Playwright Regression tests
+      run: npm run regression
+    #- name: Run Playwright specific feature tests
+    #  run: npm run uiComponents-chrome
+    - name: Run Playwright ALL tests
+      run: npx playwright test
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:

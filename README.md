@@ -15,8 +15,8 @@ This project demonstrates multiple technologies and methodologies:
 - Fixtures
 - DotEnv
 - AllureReport
-- GitHub Action
-- (ArgosCI)[https://app.argos-ci.com/michelchristiaens/pw-practice-app-ci]
+- GitHub Actions
+- [ArgosCI](https://app.argos-ci.com/michelchristiaens/pw-practice-app-ci)
 - DockerFile + DockerCompose
 
 # How to run

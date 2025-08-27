@@ -297,7 +297,10 @@ test.describe('dragdrop with iframes', () => {
     });
 
     test('iframe', async ({page}) => {
-        await page.getByRole('button', {name:"Consent"}).click();
+        const consentButton = page.getByRole('button', {name:"Consent"});
+        if(await consentButton.isVisible()){
+            await consentButton.click();
+        }   
 
         const frame = page.frameLocator('[rel-title="Photo Manager"] iframe')
         await frame.locator('li', {hasText: "High Tatras 2"}).dragTo(frame.locator('#trash'));

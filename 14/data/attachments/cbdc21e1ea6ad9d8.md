@@ -1,0 +1,141 @@
+# Page snapshot
+
+```yaml
+- navigation:
+  - link:
+    - /url: "#"
+    - img
+  - link "PW-test":
+    - /url: "#"
+  - button "Light"
+  - button:
+    - img
+  - link:
+    - /url: "#"
+    - img
+  - link:
+    - /url: "#"
+    - img
+  - text: Nick Jones
+- list:
+  - listitem:
+    - link "IoT Dashboard":
+      - /url: /pages/iot-dashboard
+      - img
+      - text: IoT Dashboard
+  - listitem: FEATURES
+  - listitem:
+    - link "Forms" [expanded]:
+      - /url: "#"
+      - img
+      - text: Forms
+      - img
+    - list:
+      - listitem:
+        - link "Form Layouts":
+          - /url: /pages/forms/layouts
+      - listitem:
+        - link "Datepicker":
+          - /url: /pages/forms/datepicker
+  - listitem:
+    - link "Modal & Overlays":
+      - /url: "#"
+      - img
+      - text: Modal & Overlays
+      - img
+    - list:
+      - listitem:
+        - link "Dialog":
+          - /url: /pages/modal-overlays/dialog
+      - listitem:
+        - link "Window":
+          - /url: /pages/modal-overlays/window
+      - listitem:
+        - link "Popover":
+          - /url: /pages/modal-overlays/popover
+      - listitem:
+        - link "Toastr":
+          - /url: /pages/modal-overlays/toastr
+      - listitem:
+        - link "Tooltip":
+          - /url: /pages/modal-overlays/tooltip
+  - listitem:
+    - link "Extra Components":
+      - /url: "#"
+      - img
+      - text: Extra Components
+      - img
+    - list:
+      - listitem:
+        - link "Calendar":
+          - /url: /pages/extra-components/calendar
+  - listitem:
+    - link "Charts":
+      - /url: "#"
+      - img
+      - text: Charts
+      - img
+    - list:
+      - listitem:
+        - link "Echarts":
+          - /url: /pages/charts/echarts
+  - listitem:
+    - link "Tables & Data":
+      - /url: "#"
+      - img
+      - text: Tables & Data
+      - img
+    - list:
+      - listitem:
+        - link "Smart Table":
+          - /url: /pages/tables/smart-table
+      - listitem:
+        - link "Tree Grid":
+          - /url: /pages/tables/tree-grid
+  - listitem:
+    - link "Auth":
+      - /url: "#"
+      - img
+      - text: Auth
+      - img
+    - list:
+      - listitem:
+        - link "Login":
+          - /url: /auth/login
+      - listitem:
+        - link "Register":
+          - /url: /auth/register
+      - listitem:
+        - link "Request Password":
+          - /url: /auth/request-password
+      - listitem:
+        - link "Reset Password":
+          - /url: /auth/reset-password
+- text: Common Datepicker
+- textbox "Form Picker"
+- text: Datepicker With Range
+- textbox "Range Picker"
+- text: Datepicker With Disabled Min Max Values
+- textbox "Min Max Picker"
+- navigation:
+  - text: Created with ♥ by
+  - link "Akveo":
+    - /url: https://akveo.page.link/8V2f
+  - text: "2019"
+  - link "":
+    - /url: "#"
+  - link "":
+    - /url: "#"
+  - link "":
+    - /url: "#"
+  - link "":
+    - /url: "#"
+- button "August 2025":
+  - text: August 2025
+  - img
+- button:
+  - img
+- button:
+  - img
+- text: Su Mo Tu We Th Fr Sa 27 28 29 30 31 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 1 2 3 4 5 6
+```

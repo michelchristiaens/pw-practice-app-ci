@@ -67,7 +67,7 @@ test.describe('Form Layouts page', () => {
         await expect(radioButton2).toBeChecked();
     });
 
-    test('radio buttons VISUAL assertion @regression', async ({page}) => {
+    test('radio buttons ARGOS VISUAL assertion @regression', async ({page}) => {
         const card = page.locator('nb-card', { hasText: "Using the Grid"});
         
         const radioButton1 = card.getByRole('radio', {name: 'Option 1'});
@@ -75,7 +75,7 @@ test.describe('Form Layouts page', () => {
         
         await radioButton1.check({ force: true });
         
-        await expect(card).toHaveScreenshot();
+        //await expect(card).toHaveScreenshot();
 
         const radio1Status = radioButton1.isChecked();
         expect(radio1Status).toBeTruthy();
@@ -83,6 +83,8 @@ test.describe('Form Layouts page', () => {
         await radioButton2.check({ force: true });
         await expect(radioButton1).not.toBeChecked();
         await expect(radioButton2).toBeChecked();
+
+        await argosScreenshot(page, "after checking option 2");
     });
 
     

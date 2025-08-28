@@ -19,20 +19,23 @@ test.describe('Form Layouts page', () => {
             console.log('cleanup db on retry')
         }
         
+        const credentialEmail_1 = 'mc@hotmail.com';
+        const credentialEmail_2 = 'aha@hotmail.com';
+
         await argosScreenshot(page, "before input");
 
         const emailTextbox = page.locator('nb-card', { hasText: "Using the Grid"}).getByRole('textbox', {name: 'Email'});
         
-        await emailTextbox.fill('mc@hotmail.com');
+        await emailTextbox.fill(credentialEmail_1);
 
-        await argosScreenshot(page, "after mc@hotmail.com input");
+        await argosScreenshot(page, `after first input`);
 
         await emailTextbox.clear();
-        await emailTextbox.pressSequentially('aha@hotmail.com', {delay: 100 /* milliseconds */});        
+        await emailTextbox.pressSequentially(credentialEmail_2, {delay: 100 /* milliseconds */});        
 
-        await argosScreenshot(page, "after aha@hotmail.com input");
+        await argosScreenshot(page, `after second input`);
 
-        expect(await emailTextbox.inputValue()).toEqual('aha@hotmail.com')
+        expect(await emailTextbox.inputValue()).toEqual(credentialEmail_2)
     });
 
     test('input fields', async ({page}, testInfo) => {       
@@ -64,7 +67,7 @@ test.describe('Form Layouts page', () => {
         await expect(radioButton2).toBeChecked();
     });
 
-    test('radio buttons VISUAL assertion', async ({page}) => {
+    test('radio buttons VISUAL assertion @regression', async ({page}) => {
         const card = page.locator('nb-card', { hasText: "Using the Grid"});
         
         const radioButton1 = card.getByRole('radio', {name: 'Option 1'});
@@ -72,7 +75,7 @@ test.describe('Form Layouts page', () => {
         
         await radioButton1.check({ force: true });
         
-        //await expect(card).toHaveScreenshot();
+        await expect(card).toHaveScreenshot();
 
         const radio1Status = radioButton1.isChecked();
         expect(radio1Status).toBeTruthy();

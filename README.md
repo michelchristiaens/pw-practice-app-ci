@@ -16,7 +16,7 @@ This project demonstrates multiple technologies and methodologies:
 - DotEnv
 - AllureReport
 - GitHub Actions
-- [ArgosCI](https://app.argos-ci.com/michelchristiaens/pw-practice-app-ci)
+- ArgosCI [![Covered by Argos Visual Testing](https://argos-ci.com/badge.svg)](https://app.argos-ci.com/michelchristiaens/pw-practice-app-ci/reference)
 - DockerFile + DockerCompose
 
 # How to run

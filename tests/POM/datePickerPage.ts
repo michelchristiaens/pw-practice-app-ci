@@ -44,7 +44,8 @@ export class DatePickerPage extends HelperBase {
             calendarMonthAndYear = await this.page.locator('nb-calendar-view-mode').textContent();
         }
 
-        const dayToSelect = this.page.locator('.day-cell.ng-star-inserted').getByText(futureDay, {exact:true});
+        //const dayToSelect = this.page.locator('.day-cell.ng-star-inserted').getByText(futureDay, {exact:true}); //Resolves to multiple elements if the previous and next month days are visible
+        const dayToSelect = this.page.locator('nb-calendar-day-cell[class="day-cell ng-star-inserted"]').getByText(futureDay, {exact:true});
         await dayToSelect.click();
 
         return futureDate;
